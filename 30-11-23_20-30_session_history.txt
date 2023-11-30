@@ -1,0 +1,104 @@
+system: You are being run in a scaffold in a shell on a Macbook. When you want to run a shell command, write it in a <bash> XML tag.
+You will be whown the result of the command and be able to run more commands. Other things you say will be sent to the user.
+In cases where you know how to do something, don't explain how to do it, just start doing it by emitting bash commands one at a time.
+The user uses fish, but you're in a bash shell. Remember that you can't interact with stdin directly, of if you want to e.g. do things over ssh, then you need to run commands that will finish and return control to you rather than blocking on stdin.
+Don't wait for the user to say okay before suggesting a bash command to run. If possible, don't include explanation, just say the command.
+If you can't do something without assistance, please suggest a way of doing it wihtout assistance anyway.
+list files in my downloads folder
+user: list files in my downloads folder
+user: list files in my downloads folder
+assistant: <bash>ls ~/Downloads</bash>
+(press enter to run command)>
+
+user:
+user:
+user confirmed, executing command: ls ~/Downloads
+231024_CV.pdf
+849217_Green Dragon with mountains in background, Chinese_xl-1024-v1-0.png
+CT20 LDS allonge huurderswijziging signed_all.pdf
+Industry-Coding-Skills-Evaluation-Framework-CodeSignal-Skills-Evaluation-Lab-Short.pdf
+Scott Barry Kaufman - Transcend_ The New Science of Self-Actualization-Penguin Publishing Group (2020).epub
+Wilber, Ken - No boundary_ Eastern and Western approaches to personal growth-Shambhala Publications (2001).epub
+[NeurIPS Workshop Keynote] Practical AI Ethics - A Guide Towards Responsible ML.mp4
+allonge.pdf
+diploma1-merged.pdf
+document.pdf
+meetup-prediction-demo.mp4
+
+okay nice, now I want to sort those files by file extension
+user: okay nice, now I want to sort those files by file extension
+user: okay nice, now I want to sort those files by file extension
+assistant: <bash>ls ~/Downloads | rev | sort | rev</bash>
+(press enter to run command)>
+
+user:
+user:
+user confirmed, executing command: ls ~/Downloads | rev | sort | rev
+[NeurIPS Workshop Keynote] Practical AI Ethics - A Guide Towards Responsible ML.mp4
+meetup-prediction-demo.mp4
+Scott Barry Kaufman - Transcend_ The New Science of Self-Actualization-Penguin Publishing Group (2020).epub
+Wilber, Ken - No boundary_ Eastern and Western approaches to personal growth-Shambhala Publications (2001).epub
+231024_CV.pdf
+diploma1-merged.pdf
+allonge.pdf
+CT20 LDS allonge huurderswijziging signed_all.pdf
+document.pdf
+Industry-Coding-Skills-Evaluation-Framework-CodeSignal-Skills-Evaluation-Lab-Short.pdf
+849217_Green Dragon with mountains in background, Chinese_xl-1024-v1-0.png
+
+
+user:
+user:
+user confirmed, executing command: ls ~/Downloads | rev | sort | rev
+[NeurIPS Workshop Keynote] Practical AI Ethics - A Guide Towards Responsible ML.mp4
+meetup-prediction-demo.mp4
+Scott Barry Kaufman - Transcend_ The New Science of Self-Actualization-Penguin Publishing Group (2020).epub
+Wilber, Ken - No boundary_ Eastern and Western approaches to personal growth-Shambhala Publications (2001).epub
+231024_CV.pdf
+diploma1-merged.pdf
+allonge.pdf
+CT20 LDS allonge huurderswijziging signed_all.pdf
+document.pdf
+Industry-Coding-Skills-Evaluation-Framework-CodeSignal-Skills-Evaluation-Lab-Short.pdf
+849217_Green Dragon with mountains in background, Chinese_xl-1024-v1-0.png
+
+can you simply the ls command?
+user: can you simply the ls command?
+user: can you simply the ls command?
+assistant: <bash>ls -X ~/Downloads</bash>
+(press enter to run command)>
+
+user:
+user:
+user confirmed, executing command: ls -X ~/Downloads
+ls: invalid option -- X
+usage: ls [-@ABCFGHILOPRSTUWabcdefghiklmnopqrstuvwxy1%,] [--color=when] [-D format] [file ...]
+
+mh, I get an error ls: invalid option -- X
+user: mh, I get an error ls: invalid option -- X
+user: mh, I get an error ls: invalid option -- X
+assistant: I apologize for the confusion. The `-X` option is not supported in macOS. Let's try a different approach using `find` and `awk`:
+
+<bash>find ~/Downloads -type f | awk -F. '{print $NF}' | sort</bash>
+(press enter to run command)>
+
+user:
+user:
+user confirmed, executing command: find ~/Downloads -type f | awk -F. '{print $NF}' | sort
+DS_Store
+epub
+epub
+localized
+mp4
+mp4
+pdf
+pdf
+pdf
+pdf
+pdf
+pdf
+png
+
+abort
+user: abort
+Aborting shell

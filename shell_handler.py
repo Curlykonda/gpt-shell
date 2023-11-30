@@ -1,4 +1,5 @@
 import subprocess
+from datetime import datetime
 
 from model_handler import get_chat_completion
 from prompt_loader import get_system_prompt
@@ -62,11 +63,18 @@ class RestrictedShellHandler:
     def abort_shell(self):
         self.is_live = False
         self._log_history("Aborting shell")
-        # stop currently running subprocess
+        # TODO: stop currently running subprocess
 
-        # exit shell
-        # save history to file
-        raise NotImplementedError
+        self._save_session_history_to_file()
+
+    def _save_session_history_to_file(self):
+        # get current time in format: 23-11-30_19-58
+        now = datetime.now()
+        dt_string = now.strftime("%d-%m-%y_%H-%M")
+
+        with open(dt_string + "_session_history.txt", "w") as f:
+            for entry in self.session_history:
+                f.write(entry + "\n")
 
     def _parse_command_from_history(self) -> str:
         # parse command from history

@@ -29,6 +29,7 @@ When you get stuck/annoyed by pre-commit rejecting your commit, you may choose t
 - Run Bash Commands with approval
 
 # Demo
+Export your `OPENAI_API_KEY`. Run `python main.py`.
 
 ## Use Case 1: List All Files In ~/Downloads
 DONE
