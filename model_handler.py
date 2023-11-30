@@ -6,6 +6,8 @@ from typing import Callable, List, Optional
 import openai
 from openai.error import RateLimitError, ServiceUnavailableError, Timeout
 
+from prompt_loader import get_system_prompt
+
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 _MAX_RETRIES = 3
@@ -68,9 +70,17 @@ def get_chat_completion(
 if __name__ == "__main__":
     prompt = "Write back 'This is a test'"
 
-    chat_model = "gpt-3.5-turbo-1106"
-    # chat_model = "gpt-4"
+    # chat_model = "gpt-3.5-turbo-1106"
+    chat_model = "gpt-4"
     prompt_turns = [{"role": "user", "content": prompt}]
 
+    chat_completion = get_chat_completion(chat_model, prompt_turns)
+    print("Chat completion: ", chat_completion["message"]["content"])
+
+    prompt = "How do I list all files in my downloads folder?"
+    prompt_turns = [
+        {"role": "system", "content": get_system_prompt()},
+        {"role": "user", "content": prompt},
+    ]
     chat_completion = get_chat_completion(chat_model, prompt_turns)
     print("Chat completion: ", chat_completion["message"]["content"])

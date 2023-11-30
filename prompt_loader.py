@@ -9,4 +9,4 @@ def _load_prompt_from_txt_file(file_path: str) -> str:
 
 
 def get_system_prompt() -> str:
-    return _load_prompt_from_txt_file(os.path.join("system_prompt.txt"))
+    return _load_prompt_from_txt_file(os.path.join(PROMPT_DIR, "system_prompt.txt"))
