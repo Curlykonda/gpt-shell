@@ -1,1 +1,2 @@
-./build/credentials.sh
+build/credentials.sh
+__pycache__/
