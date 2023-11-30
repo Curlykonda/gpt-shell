@@ -24,20 +24,17 @@ When you get stuck/annoyed by pre-commit rejecting your commit, you may choose t
 
 # Tasks
 
-## Send Request To Model
-
-## Get Text Input From Shell
-
-## Run Bash Commands
-Requires:
-- user approval
-
-## Bonus: Streaming
+- Send Request To Model
+- Get Text Input From Shell
+- Run Bash Commands with approval
 
 # Demo
 
 ## Use Case 1: List All Files In ~/Downloads
+DONE
 
 ## Use Case 2: List Only PDF Files In Downloads
+DONE
 
-## Use Case 3: Run Docker-Compose & Get Model Predictions
+## Use Case 3: Run Docker-Compose in another repo & Get Model Predictions
+(not completed/tested)
